@@ -7,31 +7,21 @@ using System.Web;
 
 namespace Vivero.Models
 {
+    [Table("Producto")]
     public class ProductoViewModels
     {
-        #region atributos
+        public ProductoViewModels() { }
 
         [Key]
-        private int idProducto;
+        public int ProductoId { get; set; }
 
-        [Required][Display(Name ="Producto")]
-        private string nombre;
+        [Required][Display(Name ="Producto")][Column("Nombre")]
+        public string nombre { get; set; }
 
         [Required]
-        private float precio;
-
-        private List<CategoriaViewModels> categoria;
-
-        #endregion
-
-        #region propiedades
-
-        public int IdProducto { get => idProducto; set => idProducto = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public float Precio { get => precio; set => precio = value; }
-        public List<CategoriaViewModels> Categoria { get => categoria; set => categoria = value; }
-
-        #endregion
+        [Column("Precio")]
+        public float precio { get; set; }
         
+        public virtual List<CategoriaViewModels> CategoriaId { get; set; }
     }
 }

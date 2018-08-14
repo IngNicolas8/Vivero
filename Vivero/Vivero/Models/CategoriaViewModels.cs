@@ -1,32 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Vivero.Models
 {
+    [Table("Categoria")]
     public class CategoriaViewModels
     {
-        #region atributos
+        public CategoriaViewModels() { }
 
+        [Key]
+        public int Id { get; set; }
+
+        [Column("nombre")]
         [Required]
-        private int idCategoria;
-
-        [Required][Display(Name = "Categoria")]
-        private string categoria;
-
-        private string descripcion;
-
-        #endregion
-
-        #region propiedades
-
-        public int IdTipo { get => idCategoria; set => idCategoria = value; }
-        public string Tipo { get => categoria; set => categoria = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-
-        #endregion
-
+        [Display(Name = "Categoria")]
+        public string nombre { get; set; }
+        
+        [Column("descripcion")]
+        [Display(Name = "Descripción")]
+        public virtual string descripcion { get; set; }
+        
     }
 }

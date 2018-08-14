@@ -1,34 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Vivero.Models
 {
+    [Table("Detalle")]
     public class DetalleViewModels
     {
-        #region atributos
+        public DetalleViewModels() { }
 
         [Key]
-        private int idDetalle;
+        public int DetalleId { get; set; }
 
         [Required]
-        private int cantidad;
+        [Column("Cantidad")]
+        public int cantidad { get; set; }
 
-        private float subTotal;
-
-        private int productoViewModels;
-
-        #endregion
-
-        #region propiedades
-
-        public int IdDetalle { get => idDetalle; set => idDetalle = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
-        public float SubTotal { get => subTotal; set => subTotal = value; }
-        public int ProductoViewModels { get => productoViewModels; set => productoViewModels = value; }
-
-        #endregion
+        [Column("SubTotal")]
+        public float subTotal { get; set; }
+        
+        public ProductoViewModels ProductoId { get; set; }
     }
 }

@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Vivero.Models
 {
+    [Table("Factura")]
     public class FacturaViewModels
     {
-        #region atributos
+        public FacturaViewModels() { }
 
         [Key]
-        private int idFactura;
+        public int FacturaId { get; set; }
 
-        [Required][Display(Name = "Fecha")]
-        private DateTime fecha;
+        [Required][Display(Name = "Fecha")][Column("Fecha")]
+        public DateTime fecha { get; set; }
 
-        [Required] [Display(Name = "Total")]
-        private float total;
-
-        private DetalleViewModels detalle;
-
-        private 
-        #endregion
-
-        #region propiedades
-
-        public int IdFactura { get => idFactura; set => idFactura = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
-        public float Total { get => total; set => total = value; }
-        public DetalleViewModels Detalle { get => detalle; set => detalle = value; }
-
-        #endregion
+        [Required] [Display(Name = "Total")][Column("Total")]
+        public float total { get; set; }
+        
+        public LocalViewModels LocalId { get; set; }
+        
+        public ClienteViewModels EmailId { get; set; }
+        
+        public DetalleViewModels DetalleId { get; set; }
     }
 }
