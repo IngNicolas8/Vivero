@@ -1,0 +1,3 @@
+#archivos que no se versionan
+/aspnet-Vivero.mdf
+*.lock
