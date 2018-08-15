@@ -130,5 +130,5 @@ C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csproj.CoreCompileInputs.ca
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csproj.CopyComplete
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.dll
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.pdb
-C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.Migrations.viero.resources
+C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.Migrations.vivero.resources
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csproj.GenerateResource.cache

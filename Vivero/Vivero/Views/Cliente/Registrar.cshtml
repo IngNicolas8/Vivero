@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNet.Identity;
+@model Vivero.Models.ClienteViewModels
+@{
+    ViewBag.Title = "Registrar datos del cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registrar datos personales</h2>
+
+@using (Html.BeginForm("Registrar", "Cliente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Por favor ingrese sus datos</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="thumbnail" id="Datos personales">
+        <br />
+        <h3>Datos personales</h3>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(c => c.Nombre, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.Nombre, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.dNI, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.fecha, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.fecha, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="thumbnail" id="Datos de contacto">
+        <br />
+        <h3>Datos de contacto</h3>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(c => c.telefono, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.telefono, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.celular, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.celular, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.EmailId, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="thumbnail" id="Domicilio">
+        <br />
+        <h3>Domicilio</h3>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor( c => c.DomicilioId.calle, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

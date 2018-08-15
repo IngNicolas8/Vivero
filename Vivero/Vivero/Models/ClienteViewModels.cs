@@ -15,6 +15,7 @@ namespace Vivero.Models
         [Required]
         [EmailAddress]
         [Key]
+        [Display(Name = "Email")]
         public string EmailId { get; set; }
 
         [Required][Display(Name ="Nombre")][Column("Nombre")]
@@ -32,6 +33,9 @@ namespace Vivero.Models
         [Display(Name = "Celular")][StringLength(13)][Column("Celular")]
         public string celular { get; set; }
         
+        [Display(Name = "DNI")][Column("DNI")]
+        public int dNI { get; set; }
+
         public DomicilioViewModels DomicilioId { get; set; }
         
         public List<FacturaViewModels> FacturaId { get; set; }

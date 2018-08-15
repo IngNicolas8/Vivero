@@ -25,6 +25,11 @@ namespace Vivero.Models
         [Column("Nro")]
         public int nro { get; set; }
         
+        [Required]
+        [Display(Name ="B°")]
+        [Column("Barrio")]
+        public string barrio { get; set; }
+
         public LocalidadViewModels LocalidadId { get; set; }
     }
 }
