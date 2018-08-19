@@ -13,65 +13,113 @@
     <h4>Por favor ingrese sus datos</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="thumbnail" id="Datos personales">
-        <br />
-        <h3>Datos personales</h3>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(c => c.Nombre, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.Nombre, new { @class = "form-control" })
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <div class="thumbnail" id="Datos personales">
+                <br />
+                <h3>Datos personales</h3>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Nombre, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.Nombre, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onchange= "validar_documento('andando', 'txtDni')" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.fecha, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.fecha, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="thumbnail" id="Datos de contacto">
+                <br />
+                <h3>Datos de contacto</h3>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(c => c.telefono, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.telefono, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.celular, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.celular, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.EmailId, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control" })
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.dNI, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(c => c.fecha, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.fecha, new { @class = "form-control" })
+        <div class="col-md-5">
+            <div class="thumbnail" id="Domicilio">
+                <br />
+                <h3>Domicilio</h3>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.DomicilioId.calle, new { @class = "form-control" })
+                    </div>
+                    @Html.LabelFor(c => c.DomicilioId.nro, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(c => c.DomicilioId.nro, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.DomicilioId.barrio, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.DomicilioId.barrio, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "form-control" })
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="thumbnail" id="Datos de contacto">
-        <br />
-        <h3>Datos de contacto</h3>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(c => c.telefono, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.telefono, new { @class = "form-control" })
-            </div>
+    <div class="row">
+        <div class="col-md-offset-10 col-md-1">
+            <input type="submit" class="btn btn-default" value="Registrar" />
         </div>
-        <div class="form-group">
-            @Html.LabelFor(c => c.celular, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.celular, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(c => c.EmailId, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control" })
-            </div>
-        </div>
-    </div>
-    <div class="thumbnail" id="Domicilio">
-        <br />
-        <h3>Domicilio</h3>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor( c => c.DomicilioId.calle, new { @class = "form-control" })
-            </div>
-        </div>
+
     </div>
 }
 
+<!-- Modal -->
+<div class="modal fade" id="validaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
