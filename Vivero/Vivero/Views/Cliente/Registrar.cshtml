@@ -28,13 +28,13 @@
                 <div class="form-group">
                     @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onchange= "validar_documento('andando', 'txtDni')" })
+                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onBlur= "validar_documento('Verificar DNI', 'txtDni', 'Debe ingresar un DNI valido')" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(c => c.fecha, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.fecha, new { @class = "form-control" })
+                        @Html.TextBoxFor(c => c.fecha, new { @class = "form-control", @Id="txtCalendario", onFocus="Calendario('txtCalendario');", @ReadOnly="False"})
                     </div>
                 </div>
             </div>
@@ -105,17 +105,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="titulo">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <h3 id="mensaje"></h3>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Enfocar('txtDni');">Close</button>
             </div>
         </div>
     </div>
