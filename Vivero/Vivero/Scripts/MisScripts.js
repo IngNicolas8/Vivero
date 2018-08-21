@@ -27,7 +27,8 @@ function Calendario(calendario) {
     cal.focus();
 }
 
-
+//Validar 
+function
 //Funcion de prueba
 function FuncionDePrueba(mensaje) {
     alert(mensaje)
