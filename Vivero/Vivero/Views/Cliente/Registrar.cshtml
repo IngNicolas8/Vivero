@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity;
+@using System.Configuration;
 @model Vivero.Models.ClienteViewModels
 @{
     ViewBag.Title = "Registrar datos del cliente";
@@ -20,15 +21,11 @@
                 <h3>Datos personales</h3>
                 <br />
                 <div class="form-group">
-                    @Html.LabelFor(c => c.Nombre, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.Nombre, new { @class = "form-control" })
+                    <div class="col-md-2">
+                        @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onBlur= "validar_documento('Verificar DNI', 'txtDni', 'Debe ingresar un DNI valido')" })
+                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onchange= "validar_documento('Verificar DNI', 'txtDni', 'Debe ingresar un DNI valido')" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,19 +42,19 @@
                 <div class="form-group">
                     @Html.LabelFor(c => c.telefono, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.telefono, new { @class = "form-control" })
+                        @Html.TextBoxFor(c => c.telefono, new { @class ="form-control", @onchange="validar('" + ConfigurationManager.AppSettings["telefono"] + "', 'txtTelefono', 'Debe ingresar un número de telefono valido', 'Número de telefono no valido');", @Id="txtTelefono"})
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(c => c.celular, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.celular, new { @class = "form-control" })
+                        @Html.TextBoxFor(c => c.celular, new { @class = "form-control", @onchange ="validar('" + ConfigurationManager.AppSettings["celular"] + "', 'txtCelular', 'Debe ingresar un número de celular valido', 'Número de celular no valido');", @Id = "txtCelular" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(c => c.EmailId, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control" })
+                        @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control", @onchange = "validar('" + ConfigurationManager.AppSettings["email"] + "', 'txtEmail', 'Debe ingresar un email valido', 'Email no valido');", @Id="txtEmail" })
                     </div>
                 </div>
             </div>
@@ -68,12 +65,16 @@
                 <h3>Domicilio</h3>
                 <br />
                 <div class="form-group">
-                    @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-2">
+                        @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
+                    </div>
                     <div class="col-md-5">
                         @Html.TextBoxFor(c => c.DomicilioId.calle, new { @class = "form-control" })
                     </div>
-                    @Html.LabelFor(c => c.DomicilioId.nro, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-3">
+                    <div class="col-md-1">
+                        @Html.LabelFor(c => c.DomicilioId.nro, new { @class = "col-md-2 control-label" })
+                    </div>
+                    <div class="col-md-4">
                         @Html.TextBoxFor(c => c.DomicilioId.nro, new { @class = "form-control" })
                     </div>
                 </div>
@@ -84,9 +85,15 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(c => c.DomicilioId.LocalidadId.localidad, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.localidad,(IEnumerable<SelectListItem>)ViewBag.Localidades, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "form-control" })
+                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia,(IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control" })
                     </div>
                 </div>
             </div>

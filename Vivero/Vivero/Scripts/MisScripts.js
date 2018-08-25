@@ -5,14 +5,8 @@ function validar_documento(titulo, dni, mensaje) {
         $("#titulo").text(titulo);
         $("#mensaje").text(mensaje);
         $('#validaciones').modal();
+        controlDNI.focus();
     }
-}
-
-//Cierre de boton con focus en el control
-function Enfocar(control) {
-    $("#body").ready(function () {
-        $("#" + control).focus();
-    });
 }
 
 //Calendario
@@ -28,7 +22,18 @@ function Calendario(calendario) {
 }
 
 //Validar 
-function
+function validar(expresion,control, mensaje, titulo) {
+    var re = new RegExp(expresion);
+    var controlAControlar = document.getElementById(control);
+    var OK = re.exec(controlAControlar.value);
+    if (!OK) {
+        $("#titulo").text(titulo);
+        $("#mensaje").text(mensaje);
+        $('#validaciones').modal();
+        controlAControlar.focus();
+    }
+}
+
 //Funcion de prueba
 function FuncionDePrueba(mensaje) {
     alert(mensaje)
