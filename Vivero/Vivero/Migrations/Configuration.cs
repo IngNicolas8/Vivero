@@ -57,7 +57,7 @@ namespace Vivero.Migrations
             provincias.Add(new ProvinciaViewModels { provincia = "Río Negro" });
             provincias.Add(new ProvinciaViewModels { provincia = "Salta" });
 
-            context.provinciaViewModels.AddRange(provincias);
+            context.provinciaViewModels.AddRange(provincias).Distinct();
 
             #endregion
 
@@ -241,7 +241,7 @@ namespace Vivero.Migrations
 
             #region Córdoba
 
-            var cba = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Cordoba");
+            var cba = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Córdoba");
 
             localidades.Add(new LocalidadViewModels { localidad = "Achiras", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Adelia María", ProvinciaId = cba });
@@ -377,7 +377,7 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Saturnino María Laspiur", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Sebastián Elcano", ProvinciaId = cba });
             #endregion
-
+            
             context.localidadViewModels.AddRange(localidades);
 
             #region Tipo documento
