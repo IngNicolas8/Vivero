@@ -218,6 +218,7 @@
     <Compile Include="Models\ProductoViewModels.cs" />
     <Compile Include="Models\CategoriaViewModels.cs" />
     <Compile Include="Models\ProvinciaViewModels.cs" />
+    <Compile Include="Models\TipoDeDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

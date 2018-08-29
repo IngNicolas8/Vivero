@@ -39,5 +39,7 @@ namespace Vivero.Models
         public DomicilioViewModels DomicilioId { get; set; }
         
         public List<FacturaViewModels> FacturaId { get; set; }
+
+        public TipoDeDocumento tipoDeDocumentoId { get; set; }
     }
 }

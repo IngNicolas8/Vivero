@@ -21,6 +21,9 @@
                 <h3>Datos personales</h3>
                 <br />
                 <div class="form-group">
+                    <div  class="col-md-1">
+                        @Html.LabelFor(c => c.tipoDeDocumentoId, new { @class= "col-md-2 control-label"})
+                    </div>
                     <div class="col-md-2">
                         @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
                     </div>
