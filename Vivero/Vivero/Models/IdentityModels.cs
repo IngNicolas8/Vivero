@@ -41,6 +41,7 @@ namespace Vivero.Models
         public DbSet<LocalViewModels> localViewModels { get; set; }
         public DbSet<ProductoViewModels> productoViewModels { get; set; }
         public DbSet<ProvinciaViewModels> provinciaViewModels { get; set; }
+        public DbSet<TipoDeDocumentoViewModels> tipoDeDocumentoViewModels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

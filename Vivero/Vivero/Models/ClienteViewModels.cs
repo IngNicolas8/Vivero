@@ -21,8 +21,8 @@ namespace Vivero.Models
         [Required][Display(Name ="Nombre")][Column("Nombre")]
         public string Nombre{ get; set; }
 
-        [Display(Name = "Fecha de nacimiento")]
-        [Column("Fecha")]
+        [Display(Name = "Fecha Nacimiento")]
+        [Column("Fecha de nacimiento")]
         public DateTime fecha { get; set; }
 
         [Display(Name = "Telefono")]
@@ -40,6 +40,6 @@ namespace Vivero.Models
         
         public List<FacturaViewModels> FacturaId { get; set; }
 
-        public TipoDeDocumento tipoDeDocumentoId { get; set; }
+        public TipoDeDocumentoViewModels tipoDeDocumentoId { get; set; }
     }
 }

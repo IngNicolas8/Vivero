@@ -7,7 +7,11 @@
 }
 
 <h2>Registrar datos personales</h2>
-
+<script>
+    $(document).ready(function () {
+        $("#ddlLocalidad").prop("disable", true);
+    })
+</script>
 @using (Html.BeginForm("Registrar", "Cliente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
@@ -21,19 +25,26 @@
                 <h3>Datos personales</h3>
                 <br />
                 <div class="form-group">
-                    <div  class="col-md-1">
-                        @Html.LabelFor(c => c.tipoDeDocumentoId, new { @class= "col-md-2 control-label"})
+                    <div  class="col-md-3">
+                        @Html.LabelFor(c => c.tipoDeDocumentoId.tipoDeDocumento, new { @class= "col-md-3 control-label"})
                     </div>
-                    <div class="col-md-2">
-                        @Html.LabelFor(c => c.dNI, new { @class = "col-md-2 control-label" })
-                    </div>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onchange= "validar_documento('Verificar DNI', 'txtDni', 'Debe ingresar un DNI valido')" })
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(c => c.tipoDeDocumentoId.tipoDeDocumento, (IEnumerable<SelectListItem>)ViewBag.TiposDeDocumento, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.fecha, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.dNI, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(c => c.dNI, new { @class = "form-control", @Id = "txtDni", @onchange = "validar_documento('Verificar DNI', 'txtDni', 'Debe ingresar un DNI valido')" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.fecha, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
                         @Html.TextBoxFor(c => c.fecha, new { @class = "form-control", @Id="txtCalendario", onFocus="Calendario('txtCalendario');", @ReadOnly="False"})
                     </div>
                 </div>
@@ -43,20 +54,26 @@
                 <h3>Datos de contacto</h3>
                 <br />
                 <div class="form-group">
-                    @Html.LabelFor(c => c.telefono, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.telefono, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
                         @Html.TextBoxFor(c => c.telefono, new { @class ="form-control", @onchange="validar('" + ConfigurationManager.AppSettings["telefono"] + "', 'txtTelefono', 'Debe ingresar un número de telefono valido', 'Número de telefono no valido');", @Id="txtTelefono"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.celular, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.celular, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
                         @Html.TextBoxFor(c => c.celular, new { @class = "form-control", @onchange ="validar('" + ConfigurationManager.AppSettings["celular"] + "', 'txtCelular', 'Debe ingresar un número de celular valido', 'Número de celular no valido');", @Id = "txtCelular" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.EmailId, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.EmailId, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
                         @Html.TextBoxFor(c => c.EmailId, new { @class = "form-control", @onchange = "validar('" + ConfigurationManager.AppSettings["email"] + "', 'txtEmail', 'Debe ingresar un email valido', 'Email no valido');", @Id="txtEmail" })
                     </div>
                 </div>
@@ -71,32 +88,38 @@
                     <div class="col-md-2">
                         @Html.LabelFor(c => c.DomicilioId.calle, new { @class = "col-md-2 control-label" })
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         @Html.TextBoxFor(c => c.DomicilioId.calle, new { @class = "form-control" })
                     </div>
                     <div class="col-md-1">
-                        @Html.LabelFor(c => c.DomicilioId.nro, new { @class = "col-md-2 control-label" })
+                        @Html.LabelFor(c => c.DomicilioId.nro, new { @class = "col-md-1 control-label" })
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-1">
                         @Html.TextBoxFor(c => c.DomicilioId.nro, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.DomicilioId.barrio, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.DomicilioId.barrio, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
                         @Html.TextBoxFor(c => c.DomicilioId.barrio, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.DomicilioId.LocalidadId.localidad, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.localidad,(IEnumerable<SelectListItem>)ViewBag.Localidades, new { @class = "form-control" })
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.DomicilioId.LocalidadId.localidad, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
+                        <select Id="ddlLocalidad" class="form-control"> </select> 
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia,(IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control" })
+                    <div class="col-md-3">
+                        @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "col-md-3 control-label" })
+                    </div>
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia,(IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control", @Id="ddlProvincia", @onChange = "activarDropdownList(ddlProvincias, ddlLocalidades, 'Localidades por provincia', 'No se encontraron localidades para esa provincia')" })
                     </div>
                 </div>
             </div>
@@ -124,7 +147,7 @@
                 <h3 id="mensaje"></h3>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Enfocar('txtDni');">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

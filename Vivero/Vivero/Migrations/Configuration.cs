@@ -382,6 +382,14 @@ namespace Vivero.Migrations
 
             #region Tipo documento
 
+            IList<TipoDeDocumentoViewModels> tiposDeDocumento = new List<TipoDeDocumentoViewModels>();
+
+            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "DNI" });
+            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Passaporte" });
+            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Provincial" });
+            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Federal" });
+
+            context.tipoDeDocumentoViewModels.AddRange(tiposDeDocumento);
 
             #endregion
         }
