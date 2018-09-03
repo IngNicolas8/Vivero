@@ -19,131 +19,128 @@ namespace Vivero.Migrations
         protected override void Seed(Vivero.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
-
-            #region provincias
-
+            
             IList<ProvinciaViewModels> provincias = new List<ProvinciaViewModels>();
+            var bsAs = new ProvinciaViewModels { provincia = "Buenos Aires" };
+            provincias.Add(bsAs);
+            var catamarca = new ProvinciaViewModels { provincia = "catamarca" };
+            provincias.Add(catamarca);
+            var chaco = new ProvinciaViewModels { provincia = "Chaco" };
+            provincias.Add(chaco);
+            var chubut = new ProvinciaViewModels { provincia = "Chubut" };
+            provincias.Add(chubut);
+            var cba = new ProvinciaViewModels { provincia = "Córdoba" };
+            provincias.Add(cba);
+            var corrientes = new ProvinciaViewModels { provincia = "Corrientes" };
+            provincias.Add(corrientes);
+            var entreRios = new ProvinciaViewModels { provincia = "Entre Ríos" };
+            provincias.Add(entreRios);
+            var formosa = new ProvinciaViewModels { provincia = "Formosa" };
+            provincias.Add(formosa);
+            var jujuy = new ProvinciaViewModels { provincia = "Jujuy" };
+            provincias.Add(jujuy);
+            var laPampa = new ProvinciaViewModels { provincia = "La Pampa" };
+            provincias.Add(laPampa);
+            var laRioja = new ProvinciaViewModels { provincia = "La Rioja" };
+            provincias.Add(laRioja);
+            var mendoza = new ProvinciaViewModels { provincia = "Mendoza" };
+            provincias.Add(mendoza);
+            var misiones = new ProvinciaViewModels { provincia = "Misiones" };
+            provincias.Add(misiones);
+            var neuquen = new ProvinciaViewModels { provincia = "Neuquén" };
+            provincias.Add(neuquen);
+            var rioNegro = new ProvinciaViewModels { provincia = "Río Negro" };
+            provincias.Add(rioNegro);
+            var salta = new ProvinciaViewModels { provincia = "Salta" };
+            provincias.Add(salta);
+            var sanJuan = new ProvinciaViewModels { provincia = "San Juan" };
+            provincias.Add(sanJuan);
+            var santaCruz = new ProvinciaViewModels { provincia = "Santa Cruz" };
+            provincias.Add(santaCruz);
+            var santaFe = new ProvinciaViewModels { provincia = "Santa Fe" };
+            provincias.Add(santaFe);
+            var santiagoDelEstero =new ProvinciaViewModels { provincia = "Santiago del Estero" };
+            provincias.Add(santiagoDelEstero);
+            var tierraDelFuego = new ProvinciaViewModels { provincia = "Tierra del Fuego" };
+            provincias.Add(tierraDelFuego);
+            var tucuman = new ProvinciaViewModels { provincia = "Tucumán" };
+            provincias.Add(tucuman);
 
-            provincias.Add(new ProvinciaViewModels { provincia = "Buenos Aires" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Catamarca" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Chaco" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Chubut" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Córdoba" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Corrientes" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Entre Ríos" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Formosa" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Jujuy" });
-            provincias.Add(new ProvinciaViewModels { provincia = "La Pampa" });
-            provincias.Add(new ProvinciaViewModels { provincia = "La Rioja" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Mendoza" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Misiones" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Neuquén" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Río Negro" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Salta" });
-            provincias.Add(new ProvinciaViewModels { provincia = "San Juan" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Santa Cruz" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Santa Fe" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Santiago del Estero" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Tierra del Fuego" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Corrientes" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Tucumán" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Formosa" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Jujuy" });
-            provincias.Add(new ProvinciaViewModels { provincia = "La Pampa" });
-            provincias.Add(new ProvinciaViewModels { provincia = "La Rioja" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Mendoza" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Misiones" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Neuquén" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Río Negro" });
-            provincias.Add(new ProvinciaViewModels { provincia = "Salta" });
-
-            context.provinciaViewModels.AddRange(provincias).Distinct();
-
-            #endregion
-
+            context.provinciaViewModels.AddOrUpdate(provincias.ToArray());
+            
             IList<LocalidadViewModels> localidades = new List<LocalidadViewModels>();
-
-            #region BsAs
-
-            //Recupero la provincia
-
-            var BsAs = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Buenos Aires");
-
+            
             //creo las localidades y les asigno la provincia
 
-            localidades.Add(new LocalidadViewModels { localidad = "Alejandro Petión", ProvinciaId=BsAs});
-            localidades.Add(new LocalidadViewModels { localidad = "Alto Los Cardales", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Arribeños", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Ascensión", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Cacharí", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Campos Salles", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Casbas", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Chascomús Country Club", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Chillar", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Claromecó", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Comandante Nicanor Otamendi", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Country Club Bosque Real-Barrio Morabo", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Country Los Médanos", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Darregueira", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Eduardo O'Brien", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "El Remanso (barrio parque)", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Empalme Lobos", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Estación Camet", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Ferré", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "General Mansilla", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "General Rojo", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Gobernador Castro", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Henderson", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Hilario Ascasubi", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Hinojo", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Huanguelén", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Jeppener", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Juan Bautista Alberdi", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Juan Cousté", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Juan José Paso", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Juan Nepomuceno Fernández", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "La Dulce", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Leandro N. Alem", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Lima", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Loma Negra", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Los Cardales", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Luján", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Mayor Buratovich", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Moquehuá", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Nicolás Levalle", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Norberto de la Riestra", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Orense" });
-            localidades.Add(new LocalidadViewModels { localidad = "Palemón Huergo" });
-            localidades.Add(new LocalidadViewModels { localidad = "Parada Robles", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Paraje Vallimanca", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Quequén", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Rawson", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Roberts", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Saavedra", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "San José", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Santa Lucía", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Santa Rosa", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Sierra Chica", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Sierra de la Ventana", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Sierras Bayas", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Treinta de Agosto", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Tres Algarrobos", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Urdampilleta", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villa Arcadia", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villa Cacique", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villa Campi", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villa Canto", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villa Ramallo", ProvinciaId = BsAs });
-            localidades.Add(new LocalidadViewModels { localidad = "Villalonga", ProvinciaId = BsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Alejandro Petión", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Alto Los Cardales", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Arribeños", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Ascensión", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Cacharí", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Campos Salles", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Casbas", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Chascomús Country Club", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Chillar", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Claromecó", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Comandante Nicanor Otamendi", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Country Club Bosque Real-Barrio Morabo", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Country Los Médanos", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Darregueira", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Eduardo O'Brien", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "El Remanso (barrio parque)", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Empalme Lobos", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Estación Camet", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Ferré", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "General Mansilla", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "General Rojo", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Gobernador Castro", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Henderson", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Hilario Ascasubi", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Hinojo", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Huanguelén", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Jeppener", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Juan Bautista Alberdi", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Juan Cousté", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Juan José Paso", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Juan Nepomuceno Fernández", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "La Dulce", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Leandro N. Alem", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Lima", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Loma Negra", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Los Cardales", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Luján", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Mayor Buratovich", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Moquehuá", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Nicolás Levalle", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Norberto de la Riestra", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Orense", ProvinciaId=bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Palemón Huergo", ProvinciaId=bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Parada Robles", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Paraje Vallimanca", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Quequén", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Rawson", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Roberts", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Saavedra", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "San José", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Santa Lucía", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Santa Rosa", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Sierra Chica", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Sierra de la Ventana", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Sierras Bayas", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Treinta de Agosto", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Tres Algarrobos", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Urdampilleta", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villa Arcadia", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villa Cacique", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villa Campi", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villa Canto", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villa Ramallo", ProvinciaId = bsAs });
+            localidades.Add(new LocalidadViewModels { localidad = "Villalonga", ProvinciaId = bsAs });
 
-            #endregion
+            //Catamarca
 
-            #region Catamarca
-
-            var catamarca = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Catamarca");
-
-            localidades.Add(new LocalidadViewModels { localidad = "Andalgalá", ProvinciaId=catamarca });
-            localidades.Add(new LocalidadViewModels { localidad = "Belén", ProvinciaId=catamarca });
+            localidades.Add(new LocalidadViewModels { localidad = "Andalgalá", ProvinciaId = catamarca });
+            localidades.Add(new LocalidadViewModels { localidad = "Belén", ProvinciaId = catamarca });
             localidades.Add(new LocalidadViewModels { localidad = "Casa de Piedra", ProvinciaId = catamarca });
             localidades.Add(new LocalidadViewModels { localidad = "Chumbicha", ProvinciaId = catamarca });
             localidades.Add(new LocalidadViewModels { localidad = "Fiambalá", ProvinciaId = catamarca });
@@ -165,12 +162,8 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Saujil", ProvinciaId = catamarca });
             localidades.Add(new LocalidadViewModels { localidad = "Tinogasta", ProvinciaId = catamarca });
             localidades.Add(new LocalidadViewModels { localidad = "Villa de Pomán", ProvinciaId = catamarca });
-            
-            #endregion
 
-            #region Chaco
-
-            var chaco = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Chaco");
+            //chaco
 
             localidades.Add(new LocalidadViewModels { localidad = "Avia Terai", ProvinciaId = chaco });
             localidades.Add(new LocalidadViewModels { localidad = "Campo Largo", ProvinciaId = chaco });
@@ -222,12 +215,7 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Villa Berthet", ProvinciaId = chaco });
             localidades.Add(new LocalidadViewModels { localidad = "Villa Río Bermejito", ProvinciaId = chaco });
 
-
-            #endregion
-
-            #region Chubut
-
-            var chubut = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Chubut");
+            //chubut
 
             localidades.Add(new LocalidadViewModels { localidad = "Dolavon", ProvinciaId = chubut });
             localidades.Add(new LocalidadViewModels { localidad = "El Maitén", ProvinciaId = chubut });
@@ -237,11 +225,7 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Río Mayo", ProvinciaId = chubut });
             localidades.Add(new LocalidadViewModels { localidad = "Trevelin", ProvinciaId = chubut });
 
-            #endregion
-
-            #region Córdoba
-
-            var cba = context.provinciaViewModels.FirstOrDefault(x => x.provincia == "Córdoba");
+            //cba
 
             localidades.Add(new LocalidadViewModels { localidad = "Achiras", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Adelia María", ProvinciaId = cba });
@@ -259,7 +243,7 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Balnearia", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Berrotarán", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Bialet Massé", ProvinciaId = cba });
-            localidades.Add(new LocalidadViewModels { localidad = "Brinkmann" });
+            localidades.Add(new LocalidadViewModels { localidad = "Brinkmann", ProvinciaId=cba });
             localidades.Add(new LocalidadViewModels { localidad = "Calchín", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Camilo Aldao", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Canals", ProvinciaId = cba });
@@ -376,10 +360,9 @@ namespace Vivero.Migrations
             localidades.Add(new LocalidadViewModels { localidad = "Santiago Temple", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Saturnino María Laspiur", ProvinciaId = cba });
             localidades.Add(new LocalidadViewModels { localidad = "Sebastián Elcano", ProvinciaId = cba });
-            #endregion
-            
-            context.localidadViewModels.AddRange(localidades);
 
+            context.localidadViewModels.AddOrUpdate(localidades.ToArray());
+            
             #region Tipo documento
 
             IList<TipoDeDocumentoViewModels> tiposDeDocumento = new List<TipoDeDocumentoViewModels>();
@@ -389,7 +372,7 @@ namespace Vivero.Migrations
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Provincial" });
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Federal" });
 
-            context.tipoDeDocumentoViewModels.AddRange(tiposDeDocumento);
+            context.tipoDeDocumentoViewModels.AddOrUpdate(tiposDeDocumento.ToArray());
 
             #endregion
         }

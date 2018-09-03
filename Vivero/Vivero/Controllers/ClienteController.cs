@@ -19,6 +19,12 @@ namespace Vivero.Controllers
             {
                 var provincias = contexto.provinciaViewModels.ToList();
                 List<SelectListItem> listaDeProvincias = new List<SelectListItem>();
+                listaDeProvincias.Add(new SelectListItem
+                {
+                    Text = "--Seleccionar--",
+                    Value = "0",
+                    Selected = true
+                });
                 foreach (ProvinciaViewModels provincia in provincias)
                 {
                     listaDeProvincias.Add(new SelectListItem
@@ -27,12 +33,6 @@ namespace Vivero.Controllers
                         Value = provincia.ProvinciaId.ToString()
                     });
                 }
-                listaDeProvincias.Add(new SelectListItem
-                {
-                    Text = "--Seleccionar--",
-                    Value = "0",
-                    Selected = true
-                });
                 ViewBag.Provincias = listaDeProvincias;
             }
 
@@ -44,6 +44,12 @@ namespace Vivero.Controllers
             {
                 var tiposDeDocumento = contexto.tipoDeDocumentoViewModels.ToList();
                 List<SelectListItem> listaDeTiposDeDocumento = new List<SelectListItem>();
+                listaDeTiposDeDocumento.Add(new SelectListItem
+                {
+                    Text = "--Seleccionar--",
+                    Value = "0",
+                    Selected = true
+                });
                 foreach (TipoDeDocumentoViewModels tipoDeDocumento in tiposDeDocumento)
                 {
                     listaDeTiposDeDocumento.Add(new SelectListItem
@@ -52,12 +58,6 @@ namespace Vivero.Controllers
                         Value = tipoDeDocumento.tipoDeDocumentoId.ToString()
                     });
                 }
-                listaDeTiposDeDocumento.Add(new SelectListItem
-                {
-                    Text = "--Seleccionar--",
-                    Value = "0",
-                    Selected = true
-                });
                 ViewBag.TiposDeDocumento = listaDeTiposDeDocumento;
             }
 
@@ -66,7 +66,7 @@ namespace Vivero.Controllers
             return View();
         }
 
-        public JsonResult Localidades(int id)
+        public JsonResult Localidades(ProvinciaViewModels provincia)
         {
             #region lista de localidades
 
@@ -82,7 +82,7 @@ namespace Vivero.Controllers
                 });
                 foreach (LocalidadViewModels localidad in localidades)
                 {
-                    if (localidad.ProvinciaId.ProvinciaId == id)
+                    if (localidad.ProvinciaId.ProvinciaId.Equals(provincia))
                     {
                         listaDeLocalidades.Add(new SelectListItem
                         {
