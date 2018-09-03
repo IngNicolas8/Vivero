@@ -66,13 +66,13 @@ namespace Vivero.Controllers
             return View();
         }
 
-        public JsonResult Localidades(ProvinciaViewModels provincia)
+        public JsonResult Localidades(string id)
         {
             #region lista de localidades
 
             using (ApplicationDbContext contexto = new ApplicationDbContext())
             {
-                var localidades = contexto.localidadViewModels.ToList();
+                var localidades = contexto.localidadViewModels;
                 List<SelectListItem> listaDeLocalidades = new List<SelectListItem>();
                 listaDeLocalidades.Add(new SelectListItem
                 {
@@ -82,7 +82,8 @@ namespace Vivero.Controllers
                 });
                 foreach (LocalidadViewModels localidad in localidades)
                 {
-                    if (localidad.ProvinciaId.ProvinciaId.Equals(provincia))
+                    contexto.Entry(localidad).Reference(p => p.ProvinciaId).Load();
+                    if (localidad.ProvinciaId.ProvinciaId.ToString().Equals(id))
                     {
                         listaDeLocalidades.Add(new SelectListItem
                         {

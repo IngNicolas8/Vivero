@@ -201,9 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809031712475_vivero.cs" />
-    <Compile Include="Migrations\201809031712475_vivero.Designer.cs">
-      <DependentUpon>201809031712475_vivero.cs</DependentUpon>
+    <Compile Include="Migrations\201809032015410_vivero.cs" />
+    <Compile Include="Migrations\201809032015410_vivero.Designer.cs">
+      <DependentUpon>201809032015410_vivero.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -311,8 +311,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809031712475_vivero.resx">
-      <DependentUpon>201809031712475_vivero.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809032015410_vivero.resx">
+      <DependentUpon>201809032015410_vivero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

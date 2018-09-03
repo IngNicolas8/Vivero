@@ -125,7 +125,6 @@ C:\Users\Nicol\Vivero\Vivero\Vivero\bin\es\EntityFramework.SqlServer.resources.d
 C:\Users\Nicol\Vivero\Vivero\Vivero\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\Nicol\Vivero\Vivero\Vivero\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\Nicol\Vivero\Vivero\Vivero\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csprojAssemblyReference.cache
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csproj.CoreCompileInputs.cache
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.csproj.CopyComplete
 C:\Users\Nicol\Vivero\Vivero\Vivero\obj\Debug\Vivero.dll

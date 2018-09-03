@@ -22,7 +22,7 @@ function Calendario(calendario) {
 }
 
 //Validar 
-function validar(expresion,control, mensaje, titulo) {
+function validar(expresion, control, mensaje, titulo) {
     var re = new RegExp(expresion);
     var controlAControlar = document.getElementById(control);
     var OK = re.exec(controlAControlar.value);
@@ -36,35 +36,30 @@ function validar(expresion,control, mensaje, titulo) {
 
 //funcion que llena y habilita el ddl localidades
 function activarDropdownList(titulo, mensaje) {
-    $("#document").ready(function () {
-        $("#ddlLocalidades").prop("disabled", false);
-        if ($("#ddlProvincias").val() != "--Seleccionar--") {
-            var ProvinciasOpciones = {};
-            ProvinciasOpciones.url = "/Cliente/Localidades";
-            ProvinciasOpciones.type = "GET";
-            ProvinciasOpciones.data = JSON.stringify({
-                ProvinciasId: $("#ddlProvincias").val()
-            });
-            ProvinciasOpciones.datatype = "json";
-            ProvinciasOpciones.contentType = "application/json";
-            ProvinciasOpciones.success = function (ListaDeProvincias) {
+    if ($("#ddlProvincias").val() != "--Seleccionar--") {
+        $.ajax({
+            type: 'GET',
+            url: '/Cliente/Localidades/',
+            data: { provincia: $("#ddlProvincias").val() },
+            cache: false,
+            success: function (ListaDeProvincias) {
                 $("#ddlLocalidades").empty();
                 for (var i = 0; i < StatesList.length; i++) {
                     $("#ddlLocalidades").append("<option>" + ListaDeProvincias[i] + "</option>");
                 }
                 $("#ddlLocalidades").prop("disabled", false);
-            };
-            ProvinciasOpciones.error = function () {
+            },
+            error: function () {
                 $("#titulo").text(titulo);
                 $("#mensaje").text(mensaje);
                 $('#validaciones').modal();
-            };
-            $.ajax(ProvinciasOpciones);
-        } else {
-            $("#ddlLocalidades").empty();
-            $("#ddlLocalidades").prop("disabled", true);
-        } 
-    });
+            }
+        });
+    }
+    else {
+        $("#ddlLocalidades").empty();
+        $("#ddlLocalidades").prop("disabled", true);
+    };
 }
 //Funcion de prueba
 function FuncionDePrueba(mensaje) {

@@ -13,7 +13,7 @@ namespace Vivero.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809031712475_vivero"; }
+            get { return "201809032015410_vivero"; }
         }
         
         string IMigrationMetadata.Source

@@ -70,7 +70,7 @@ namespace Vivero.Migrations
             
             IList<LocalidadViewModels> localidades = new List<LocalidadViewModels>();
             
-            //creo las localidades y les asigno la provincia
+            //creo las localidades y les asigno la ProvinciaId
 
             localidades.Add(new LocalidadViewModels { localidad = "Alejandro Petión", ProvinciaId = bsAs });
             localidades.Add(new LocalidadViewModels { localidad = "Alto Los Cardales", ProvinciaId = bsAs });
@@ -369,7 +369,7 @@ namespace Vivero.Migrations
 
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "DNI" });
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Passaporte" });
-            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Provincial" });
+            tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula ProvinciaIdl" });
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Federal" });
 
             context.tipoDeDocumentoViewModels.AddOrUpdate(tiposDeDocumento.ToArray());
