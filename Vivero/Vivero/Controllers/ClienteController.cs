@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.EntityClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vivero.Models;
+using System.Data.Entity;
 
 namespace Vivero.Controllers
 {
@@ -65,14 +67,12 @@ namespace Vivero.Controllers
 
             return View();
         }
-
-        public JsonResult Localidades(string id)
+        
+        public JsonResult Localidades(ProvinciaViewModels id)
         {
-            #region lista de localidades
-
             using (ApplicationDbContext contexto = new ApplicationDbContext())
             {
-                var localidades = contexto.localidadViewModels;
+                var localidades = contexto.localidadViewModels.Include(x => x.ProvinciaId).ToList(); 
                 List<SelectListItem> listaDeLocalidades = new List<SelectListItem>();
                 listaDeLocalidades.Add(new SelectListItem
                 {
@@ -82,7 +82,7 @@ namespace Vivero.Controllers
                 });
                 foreach (LocalidadViewModels localidad in localidades)
                 {
-                    contexto.Entry(localidad).Reference(p => p.ProvinciaId).Load();
+
                     if (localidad.ProvinciaId.ProvinciaId.ToString().Equals(id))
                     {
                         listaDeLocalidades.Add(new SelectListItem
@@ -95,8 +95,6 @@ namespace Vivero.Controllers
 
                 return Json(listaDeLocalidades);
             }
-
-            #endregion
         }
     }
 }
