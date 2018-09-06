@@ -114,11 +114,10 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-3">
-                        @*@Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId, new { @class = "col-md-3 control-label" })*@
-                        @Html.Label("Provincias")
+                        @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId, new { @class = "col-md-3 control-label" })
                     </div>
                     <div class="col-md-5">
-                        @Html.DropDownList("Provincias", (IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control", @Id="ddlProvincias", @onChange = "activarDropdownList('Localidades por provincia', 'No se encontraron localidades para esa provincia')" })
+                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.ProvinciaId, (IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control", @Id="ddlProvincias", @onChange = "activarDropdownList('Localidades por provincia', 'No se encontraron localidades para esa provincia')" })
                     </div>
                 </div>
             </div>

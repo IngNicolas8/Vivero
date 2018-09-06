@@ -68,6 +68,7 @@ namespace Vivero.Controllers
             return View();
         }
         
+        [HttpPost]
         public JsonResult Localidades(ProvinciaViewModels id)
         {
             using (ApplicationDbContext contexto = new ApplicationDbContext())
@@ -83,7 +84,7 @@ namespace Vivero.Controllers
                 foreach (LocalidadViewModels localidad in localidades)
                 {
 
-                    if (localidad.ProvinciaId.ProvinciaId.ToString().Equals(id))
+                    if (localidad.ProvinciaId.ProvinciaId == id.ProvinciaId)
                     {
                         listaDeLocalidades.Add(new SelectListItem
                         {

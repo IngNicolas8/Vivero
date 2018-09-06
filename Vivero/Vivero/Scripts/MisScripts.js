@@ -38,20 +38,19 @@ function validar(expresion, control, mensaje, titulo) {
 function activarDropdownList(titulo, mensaje) {
     if ($("#ddlProvincias").val() != "--Seleccionar--") {
         var provincia = {
-            ProvinciaId = $('#ddlProvincias').val(),
-            provincia = $('#ddlProvincias').text()
+            ProvinciaId: $("#ddlProvincias").val(),
+            provincia: ""
         }
         $.ajax({
             type: 'POST',
-            url: '/Cliente/Localidades/' + provincia.id,
-            content: "application/json; charset=utf-8",
+            url: '/Cliente/Localidades/',
+            contentType: "application/json; charset=utf-8",
             dataType: 'json',
             data: JSON.stringify(provincia),
-            cache: false,
             success: function (ListaDeProvincias) {
                 $("#ddlLocalidades").empty();
-                for (var i = 0; i < StatesList.length; i++) {
-                    $("#ddlLocalidades").append("<option>" + ListaDeProvincias[i] + "</option>");
+                for (var i = 0; i < ListaDeProvincias.length; i++) {
+                    $("#ddlLocalidades").append("<option value=\"" + ListaDeProvincias[i].Value + "\">" + ListaDeProvincias[i].Text + "</option>");
                 }
                 $("#ddlLocalidades").prop("disabled", false);
             },
