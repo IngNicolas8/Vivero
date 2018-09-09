@@ -371,10 +371,10 @@ namespace Vivero.Migrations
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Passaporte" });
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula ProvinciaIdl" });
             tiposDeDocumento.Add(new TipoDeDocumentoViewModels { tipoDeDocumento = "Cedula Federal" });
+            
+            context.tipoDeDocumentoViewModels.AddOrUpdate(t => t.tipoDeDocumento, tiposDeDocumento.ToArray());
 
-            context.tipoDeDocumentoViewModels.AddOrUpdate(tiposDeDocumento.ToArray());
-
-            #endregion
+            #endregion           
         }
     }
 }

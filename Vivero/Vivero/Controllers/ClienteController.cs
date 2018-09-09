@@ -45,29 +45,37 @@ namespace Vivero.Controllers
             using (ApplicationDbContext contexto = new ApplicationDbContext())
             {
                 var tiposDeDocumento = contexto.tipoDeDocumentoViewModels.ToList();
-                List<SelectListItem> listaDeTiposDeDocumento = new List<SelectListItem>();
-                listaDeTiposDeDocumento.Add(new SelectListItem
-                {
-                    Text = "--Seleccionar--",
-                    Value = "0",
-                    Selected = true
-                });
-                foreach (TipoDeDocumentoViewModels tipoDeDocumento in tiposDeDocumento)
-                {
-                    listaDeTiposDeDocumento.Add(new SelectListItem
-                    {
-                        Text = tipoDeDocumento.tipoDeDocumento,
-                        Value = tipoDeDocumento.tipoDeDocumentoId.ToString()
-                    });
-                }
-                ViewBag.TiposDeDocumento = listaDeTiposDeDocumento;
+                //List<SelectListItem> listaDeTiposDeDocumento = new List<SelectListItem>();
+                //listaDeTiposDeDocumento.Add(new SelectListItem
+                //{
+                //    Text = "--Seleccionar--",
+                //    Value = "0",
+                //    Selected = true
+                //});
+                //foreach (TipoDeDocumentoViewModels tipoDeDocumento in tiposDeDocumento)
+                //{
+                //    listaDeTiposDeDocumento.Add(new SelectListItem
+                //    {
+                //        Text = tipoDeDocumento.tipoDeDocumento,
+                //        Value = tipoDeDocumento.TipoDeDocumentoId.ToString()
+                //    });
+                //}
+                //ViewBag.TiposDeDocumento = listaDeTiposDeDocumento;
+                SelectList listaDeTiposDeDocumentos = new SelectList(tiposDeDocumento, "tipoDeDocumento", "TipoDeDocumentoId");
+                ViewBag.TiposDeDocumento = listaDeTiposDeDocumentos;
             }
 
             #endregion
 
+
             return View();
         }
         
+        /// <summary>
+        /// Metodo que devuelve las localidades pasando para una provincia
+        /// </summary>
+        /// <param name="id">provincia</param>
+        /// <returns>json con las localidades</returns>
         [HttpPost]
         public JsonResult Localidades(ProvinciaViewModels id)
         {
@@ -96,6 +104,35 @@ namespace Vivero.Controllers
 
                 return Json(listaDeLocalidades);
             }
+        }
+
+        //POST: Cliente
+        /// <summary>
+        /// Registra un cliente
+        /// </summary>
+        /// <param name="cliente">cliente a registrar</param>
+        /// <returns>una vista</returns>
+        [HttpPost]
+        public ActionResult Registrar(ClienteViewModels cliente)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ApplicationDbContext contexto = new ApplicationDbContext();
+                    if (ModelState.IsValid)
+                    {
+                        contexto.clienteViewModels.Add(cliente);
+                        contexto.SaveChanges();
+                    }
+                }
+            }
+            catch
+            {
+                return View("Registrar");
+            }
+
+            return View();
         }
     }
 }

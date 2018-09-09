@@ -10,8 +10,10 @@ namespace Vivero.Models
     [Table("TipoDeDocumento")]
     public class TipoDeDocumentoViewModels
     {
+        public TipoDeDocumentoViewModels(){}
+
         [Key]
-        public int tipoDeDocumentoId { get; set; }
+        public int TipoDeDocumentoId { get; set; }
 
         [Required]
         [Column("TipoDeDocumento")]

@@ -19,6 +19,9 @@ namespace Vivero.Models
         }
     }
 
+    /// <summary>
+    /// Contexto de la aplicacion para CRUD
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
