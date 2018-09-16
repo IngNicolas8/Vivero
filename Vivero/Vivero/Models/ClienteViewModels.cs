@@ -40,6 +40,9 @@ namespace Vivero.Models
         
         public List<FacturaViewModels> FacturaId { get; set; }
 
+        [NotMapped]
+        public int documentoId { get; set; }
+
         public TipoDeDocumentoViewModels TipoDeDocumentoId { get; set; }
     }
 }

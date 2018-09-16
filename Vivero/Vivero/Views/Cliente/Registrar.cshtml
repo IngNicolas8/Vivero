@@ -27,7 +27,7 @@
                         @Html.LabelFor(c => c.TipoDeDocumentoId.tipoDeDocumento, new { @class= "col-md-3 control-label"})
                     </div>
                     <div class="col-md-5">
-                        @Html.DropDownListFor(c => c.TipoDeDocumentoId, ViewBag.TiposDeDocumento, new { @class = "form-control", @Id="ddlTipoDeDocumento" })
+                        @Html.DropDownListFor(c => c.documentoId, ViewBag.tiposDeDocumento as IEnumerable<SelectListItem>, new { @class = "form-control" });
                     </div>
                 </div>
                 <div class="form-group">

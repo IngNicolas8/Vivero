@@ -114,6 +114,7 @@
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
@@ -201,9 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809092120210_vivero.cs" />
-    <Compile Include="Migrations\201809092120210_vivero.Designer.cs">
-      <DependentUpon>201809092120210_vivero.cs</DependentUpon>
+    <Compile Include="Migrations\201809162258353_vivero.cs" />
+    <Compile Include="Migrations\201809162258353_vivero.Designer.cs">
+      <DependentUpon>201809162258353_vivero.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -311,8 +312,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809092120210_vivero.resx">
-      <DependentUpon>201809092120210_vivero.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809162258353_vivero.resx">
+      <DependentUpon>201809162258353_vivero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
