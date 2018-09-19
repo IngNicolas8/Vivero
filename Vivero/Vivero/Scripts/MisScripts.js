@@ -36,6 +36,7 @@ function validar(expresion, control, mensaje, titulo) {
 
 //funcion que llena y habilita el ddl localidades
 function activarDropdownList(titulo, mensaje) {
+    var test = $("#ddlProvincias").val();
     if ($("#ddlProvincias").val() != "--Seleccionar--") {
         var provincia = {
             ProvinciaId: $("#ddlProvincias").val(),
@@ -43,7 +44,7 @@ function activarDropdownList(titulo, mensaje) {
         }
         $.ajax({
             type: 'POST',
-            url: '/Cliente/Localidades/',
+            url: '/Cliente/ObtenerLocalidades/',
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             data: JSON.stringify(provincia),
@@ -66,6 +67,12 @@ function activarDropdownList(titulo, mensaje) {
         $("#ddlLocalidades").prop("disabled", true);
     };
 }
+
+//funcion que guarda enhidden el id de la localidad
+function selecionarLocalidad() {
+
+}
+
 //Funcion de prueba
 function FuncionDePrueba(mensaje) {
     alert(mensaje)

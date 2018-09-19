@@ -29,7 +29,19 @@ namespace Vivero.Models
         [Display(Name ="B°")]
         [Column("Barrio")]
         public string barrio { get; set; }
-
+        
         public LocalidadViewModels LocalidadId { get; set; }
+
+        /// <summary>
+        /// para obtener la clave primaria
+        /// </summary>
+        [NotMapped]
+        public int provinciaId { get; set; }
+
+        /// <summary>
+        /// para obtener la clave primaria
+        /// </summary>
+        [NotMapped]
+        public int localidadId { get; set; }
     }
 }

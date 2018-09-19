@@ -27,7 +27,7 @@
                         @Html.LabelFor(c => c.TipoDeDocumentoId.tipoDeDocumento, new { @class= "col-md-3 control-label"})
                     </div>
                     <div class="col-md-5">
-                        @Html.DropDownListFor(c => c.documentoId, ViewBag.tiposDeDocumento as IEnumerable<SelectListItem>, new { @class = "form-control" });
+                        @Html.DropDownListFor(c => c.documentoId, ViewBag.tiposDeDocumento as IEnumerable<SelectListItem>, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -109,7 +109,7 @@
                         @Html.LabelFor(c => c.DomicilioId.LocalidadId.ProvinciaId.provincia, new { @class = "col-md-3 control-label" })
                     </div>
                     <div class="col-md-5">
-                        @Html.DropDownListFor(c => c.DomicilioId.LocalidadId.ProvinciaId, (IEnumerable<SelectListItem>)ViewBag.Provincias, new { @class = "form-control", @Id = "ddlProvincias", @onChange = "activarDropdownList('Localidades por provincia', 'No se encontraron localidades para esa provincia')" })
+                        @Html.DropDownListFor(c => c.DomicilioId.provinciaId, ViewBag.Provincias as IEnumerable<SelectListItem>, new { @class = "form-control", @Id = "ddlProvincias", @onChange = "activarDropdownList('Localidades por provincia', 'No se encontraron localidades para esa provincia')" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -117,7 +117,8 @@
                         @Html.LabelFor(c => c.DomicilioId.LocalidadId.localidad, new { @class = "col-md-3 control-label" })
                     </div>
                     <div class="col-md-5">
-                        <select Id="ddlLocalidades" class="form-control"> </select>
+                        <select Id="ddlLocalidades" class="form-control" onchange="FuncionDePrueba(this)"> </select>
+                        @Html.HiddenFor(c => c.DomicilioId.localidadId, new { @Id="localidadId"})
                     </div>
                 </div>
             </div>
