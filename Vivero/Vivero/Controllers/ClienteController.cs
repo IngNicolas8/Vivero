@@ -73,11 +73,13 @@ namespace Vivero.Controllers
         /// </summary>
         /// <param name="provincia">id de la provincia</param>
         /// <returns>lista de localidades</returns>
-        public JsonResult ObtenerLocalidades(ProvinciaViewModels provincia)
+        [HttpPost]
+        public JsonResult ObtenerLocalidades(int id)
         {
             ApplicationDbContext contexto = new ApplicationDbContext();
-            var localidades = new SelectList(contexto.localidadViewModels.Where(l => l.ProvinciaId.ProvinciaId == provincia.ProvinciaId), "Value", "Text");
-            return Json(localidades);
+            var localidades = contexto.localidadViewModels.Where(l => l.ProvinciaId.ProvinciaId == id);
+            var selectLists = new SelectList(localidades, "localidadId", "localidad");
+            return Json(selectLists);
         }
     }
 }

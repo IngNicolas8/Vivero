@@ -34,19 +34,23 @@ function validar(expresion, control, mensaje, titulo) {
     }
 }
 
+//funcion que guarda enhidden el id de la localidad
+function selecionarLocalidad() {
+
+}
+
 //funcion que llena y habilita el ddl localidades
 function activarDropdownList(titulo, mensaje) {
     var test = $("#ddlProvincias").val();
     if ($("#ddlProvincias").val() != "--Seleccionar--") {
         var provincia = {
-            ProvinciaId: $("#ddlProvincias").val(),
-            provincia: ""
+            id: $("#ddlProvincias").val(),
         }
         $.ajax({
             type: 'POST',
             url: '/Cliente/ObtenerLocalidades/',
             contentType: "application/json; charset=utf-8",
-            dataType: 'json',
+            dataType: 'Json',
             data: JSON.stringify(provincia),
             success: function (ListaDeProvincias) {
                 $("#ddlLocalidades").empty();
@@ -66,11 +70,6 @@ function activarDropdownList(titulo, mensaje) {
         $("#ddlLocalidades").empty();
         $("#ddlLocalidades").prop("disabled", true);
     };
-}
-
-//funcion que guarda enhidden el id de la localidad
-function selecionarLocalidad() {
-
 }
 
 //Funcion de prueba
